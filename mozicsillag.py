@@ -42,18 +42,6 @@ def listopciok(what):
   addDir('Filmek A-Z', 'azlist', '', '')
   xbmcplugin.endOfDirectory(pluginhandle)
 
-
-def addLink(name, url, mode, iconimage):
-  u = sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+urllib.quote_plus(mode)
-  ok = True
-  liz = xbmcgui.ListItem(name, iconImage="DefaultVideo.png", thumbnailImage=iconimage)
-  liz.setInfo(type="Video", infoLabels={"Title": name})
-  liz.setProperty('IsPlayable', 'true')
-  liz.addContextMenuItems([('LABELLLL', 'RunPlugin(plugin://'+addonId+'/?mode=queueVideo&url='+urllib.quote_plus(u)+'&name='+urllib.quote_plus(name)+')',)])
-  ok = xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]), url=u, listitem=liz)
-  return ok
-
-
 def categories(url):
   addDir('Akció',  baseUrl + '/movies.php?sort=id&cat=1&scat=1' , 'filmlista', '')
   addDir('Animáció',  baseUrl + '/movies.php?sort=id&cat=1&scat=3' , 'filmlista', '')
